@@ -1,0 +1,10 @@
+.idea/
+/vendor
+.DS_Store
+
+phpunit.phar
+composer.phar
+composer.lock
+
+*.project
+.php_cs.cache
