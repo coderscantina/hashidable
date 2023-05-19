@@ -50,6 +50,9 @@ trait Hashidable
 
     public static function decodeHashId(?string $value): ?int
     {
+        if (!$value) {
+            return null;
+        }
         $result = self::getHashidsFactory()->decode($value);
 
         return count($result) ? $result[0] : null;
