@@ -1,6 +1,12 @@
 # Hashidable from Coder's Cantina
 
-> An adapted bridge for using [laravel-hashids](https://github.com/vinkla/laravel-hashids) in laravel models. 
+> An adapted bridge for using [laravel-hashids](https://github.com/vinkla/laravel-hashids) in Laravel models. 
+
+## Features
+- Hashid route model binding
+- Individual salt per model
+- Optional individual configuration per model
+- Helper methods for encoding, decoding and finding by hashid
 
 ## 🏗 Install
 
