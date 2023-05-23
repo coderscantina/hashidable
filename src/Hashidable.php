@@ -3,7 +3,7 @@
 namespace CodersCantina\Hashids;
 
 use Illuminate\Database\Eloquent\Model;
-use \Illuminate\Support\Arr;
+use Illuminate\Support\Arr;
 
 trait Hashidable
 {
@@ -12,12 +12,14 @@ trait Hashidable
         $connections = config('hashids.connections');
         $config = Arr::get($connections, __CLASS__, $connections[config('hashids.default')]);
 
-        return app('hashids.factory')->make(array_replace(
-            $config,
-            [
-                'salt' => __CLASS__ . $config['salt']
-            ]
-        ));
+        return app('hashids.factory')->make(
+            array_replace(
+                $config,
+                [
+                    'salt' => __CLASS__ . $config['salt'],
+                ]
+            )
+        );
     }
 
     public function getRouteKey(): string

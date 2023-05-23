@@ -1,4 +1,5 @@
 <?php
+
 namespace CodersCantina\Hashids;
 
 use GrahamCampbell\TestBench\AbstractPackageTestCase;
@@ -15,7 +16,7 @@ class HashidableTest extends AbstractPackageTestCase
     }
 
     /** @test */
-    public function it_encodes_an_id()
+    public function itEncodesAnId()
     {
         $result = Foo::encodeHashId(1);
 
@@ -23,14 +24,14 @@ class HashidableTest extends AbstractPackageTestCase
     }
 
     /** @test */
-    public function it_decodes_an_id()
+    public function itDecodesAnId()
     {
         $result = Foo::decodeHashId('Za');
         $this->assertEquals(1, $result);
     }
 
     /** @test */
-    public function it_finds_a_model_by_hashid()
+    public function itFindsAModelByHashid()
     {
         try {
             $result = Foo::findByHashId('Za');
@@ -41,7 +42,7 @@ class HashidableTest extends AbstractPackageTestCase
     }
 
     /** @test */
-    public function it_resolves_a_model_via_route_binding()
+    public function itResolvesAModelViaRouteBinding()
     {
         try {
             $result = (new Foo)->resolveRouteBinding('Za');
@@ -52,7 +53,7 @@ class HashidableTest extends AbstractPackageTestCase
     }
 
     /** @test */
-    public function it_generates_a_route_key()
+    public function itGeneratesARouteKey()
     {
         $foo = (new Foo)->forceFill(['id' => 1]);
 
@@ -60,7 +61,7 @@ class HashidableTest extends AbstractPackageTestCase
     }
 
     /** @test */
-    public function it_returns_null_with_a_nulled_hashid()
+    public function itReturnsNullWithANulledHashid()
     {
         $result = Foo::findByHashId(null);
         $this->assertNull($result);
