@@ -1,7 +1,7 @@
 {
 	"name": "coderscantina/hashidable",
 	"type": "library",
-	"description": "An adapted Hashids bridge for using hashids in Laravel models.",
+	"description": "An adapted bridge for using hashids in Laravel models.",
 	"keywords": [
 		"laravel",
 		"laravel-hashids",
