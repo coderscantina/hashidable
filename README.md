@@ -7,6 +7,8 @@
 - Individual salt per model
 - Optional individual configuration per model
 - Helper methods for encoding, decoding and finding by hashid
+- Collection support for working with multiple hashids
+- Performance optimizations with factory caching
 
 ## 🏗 Install
 
@@ -23,17 +25,18 @@ Add the Hashidable trait to your model
 ```php
 use CodersCantina\Hashidable;
 
-class Phone extends Model
+class Foo extends Model
 {
     use Hashidable;
 }
-
 ```
+
+### Route Model Binding
 
 Expose the hashid in a resource
 
 ```php
-class PhoneResource extends JsonResource
+class FooResource extends JsonResource
 {
     /**
      * @param  \Illuminate\Http\Request  $request
@@ -46,29 +49,48 @@ class PhoneResource extends JsonResource
         ];
     }
 }
-
 ```
 
 Resolve the model via hashid in a controller
 
 ```php
 /**
-* @param  \App\Models\Phone  $phone
+* @param  \App\Models\Foo  $foo
 * @return \Illuminate\Http\Response
 */
-public function show(Phone $phone)
+public function show(Foo $foo)
 {
-    return new PhoneResource($phone);
+    return new FooResource($foo);
 }
 ```
+
+### Working with Single Models/IDs
 
 Static methods to work with hashIds:
 
 ```php
-Foo::encodeHashId(1);
-Foo::decodeHashId('A3');
-Foo::findByHashId('A3');
+Foo::encodeHashId(1);             // Convert ID to hashid
+Foo::decodeHashId('A3');          // Convert hashid to ID
+Foo::findByHashId('A3');          // Find model by hashid
+Foo::findByHashIdOrFail('A3');    // Find model by hashid or throw exception
 ```
+
+### Working with Collections/Arrays
+
+Methods for working with multiple models or IDs:
+
+```php
+// Encode multiple IDs
+Foo::encodeHashIds([1, 2, 3]);    // Returns array of hashids
+
+// Decode multiple hashids
+Foo::decodeHashIds(['A3', 'B7']); // Returns array of IDs
+
+// Find multiple models by hashids
+Foo::findByHashIds(['A3', 'B7']); // Returns collection of models
+```
+
+### Custom Configuration
 
 Overwrite config with a model like `App\User::class`
 
