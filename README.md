@@ -1,5 +1,7 @@
 # Hashidable from Coder's Cantina
 
+[![Laravel Compatibility](https://badge.laravel.cloud/badge/coderscantina/hashidable)](https://packagist.org/packages/coderscantina/hashidable)
+
 > An adapted bridge for using [laravel-hashids](https://github.com/vinkla/laravel-hashids) in Laravel models. 
 
 ## Features
